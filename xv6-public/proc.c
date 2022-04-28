@@ -14,6 +14,7 @@ struct {
 
 static struct proc *initproc;
 
+uint readcount = 0;
 int nextpid = 1;
 extern void forkret(void);
 extern void trapret(void);
@@ -531,4 +532,10 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+int
+getreadcount(void)
+{
+  return readcount;
 }
