@@ -97,3 +97,34 @@ sys_yield(void)
   return 0;
 }
 
+int
+sys_setnice(void)
+{
+  int pid, nice_value;
+
+  if(argint(0, &pid) < 0 || argint(1, &nice_value))
+    return -1;
+  return setnice(pid, nice_value);
+}
+
+int
+sys_getnice(void)
+{
+  int pid;
+
+  if(argint(0, &pid) < 0)
+    return -1;
+  return getnice(pid);
+}
+
+int
+sys_ps(void)
+{
+  int pid;
+
+  if(argint(0, &pid) < 0)
+    return -1;
+  
+  ps(pid);
+  return 0;
+}
